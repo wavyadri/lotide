@@ -41,7 +41,7 @@ const takeUntil = function (array, callback) {
       return array.slice(0, array.indexOf(element));
     }
   }
-  return newArray;
+  return;
 };
 
 // TESTS
