@@ -33,8 +33,13 @@ const eqObjects = function (object1, object2) {
   }
 
   for (const key of keys1) {
-    // if equal keys contain unequal arrays, not equal
-    if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
+    // if both are objects
+    if (typeof object1[key] === 'object' && typeof object2[key] === 'object') {
+      /////
+      return eqObjects(object1[key], object2[key]); ///////////////////////////////// new lines added: recursion!
+      // if both are arrays
+    } else if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
+      // if equal keys contain unequal arrays, not equal
       if (!eqArrays(object1[key], object2[key])) {
         return false;
       }
@@ -50,24 +55,45 @@ const eqObjects = function (object1, object2) {
 
 // TEST CODE
 
-//step 2
-const ab = { a: '1', b: '2' };
-const ba = { b: '2', a: '1' };
-eqObjects(ab, ba); // => true
+// //step 2
+// const ab = { a: '1', b: '2' };
+// const ba = { b: '2', a: '1' };
+// eqObjects(ab, ba); // => true
 
-const abc = { a: '1', b: '2', c: '3' };
-eqObjects(ab, abc); // => false
+// const abc = { a: '1', b: '2', c: '3' };
+// eqObjects(ab, abc); // => false
 
-assertEqual(eqObjects(ab, ba), true);
-assertEqual(eqObjects(ab, abc), false);
+// assertEqual(eqObjects(ab, ba), true);
+// assertEqual(eqObjects(ab, abc), false);
 
-// // step 3
-const cd = { c: '1', d: ['2', 3] };
-const dc = { d: ['2', 3], c: '1' };
-eqObjects(cd, dc); // => true
+// // // step 3
+// const cd = { c: '1', d: ['2', 3] };
+// const dc = { d: ['2', 3], c: '1' };
+// eqObjects(cd, dc); // => true
 
-const cd2 = { c: '1', d: ['2', 3, 4] };
-eqObjects(cd, cd2); // => false
+// const cd2 = { c: '1', d: ['2', 3, 4] };
+// eqObjects(cd, cd2); // => false
 
-assertEqual(eqObjects(cd, dc), true); //
-assertEqual(eqObjects(cd, cd2), false); //
+// assertEqual(eqObjects(cd, dc), true); //
+// assertEqual(eqObjects(cd, cd2), false); //
+
+// // step 4
+// const ef = { c: '1', d: { 2: 3 } };
+// const fe = { d: { 2: 3 }, c: '1' };
+// eqObjects(ef, fe); // => true
+
+// const ef2 = { c: '1', d: ['2', 3, 4] };
+// eqObjects(ef, ef2); // => false
+
+// assertEqual(eqObjects(ef, fe), true); //
+// assertEqual(eqObjects(ef, ef2), false); //
+
+assertEqual(
+  eqObjects({ a: { z: { cat: 7 } }, b: 2 }, { a: { z: { cat: 7 } }, b: 2 }),
+  true
+); // true
+assertEqual(
+  eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }),
+  false
+); // false
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false); // false
