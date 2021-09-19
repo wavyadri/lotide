@@ -10,8 +10,14 @@ const eqObjects = function (object1, object2) {
   }
 
   for (const key of keys1) {
-    // if equal keys contain unequal arrays, not equal
-    if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
+    // if both are objects
+    if (typeof object1[key] === 'object' && typeof object2[key] === 'object') {
+      /////
+      return eqObjects(object1[key], object2[key]); ///////////////////////////////// new lines added: recursion!
+
+      // if both are arrays
+    } else if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
+      // if equal keys contain unequal arrays, not equal
       if (!eqArrays(object1[key], object2[key])) {
         return false;
       }
