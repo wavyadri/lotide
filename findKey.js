@@ -56,3 +56,5 @@ assertEqual(
   ),
   'wednesday'
 );
+
+module.exports = findKey;

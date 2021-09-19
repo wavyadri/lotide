@@ -41,3 +41,5 @@ assertArraysEqual(results2, []); // true
 const words3 = ['same', 'same'];
 const results3 = map(words3, (word) => word[0]);
 assertArraysEqual(results3, ['s', 's']); // true
+
+module.exports = map;
