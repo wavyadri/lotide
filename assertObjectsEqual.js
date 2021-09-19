@@ -48,3 +48,5 @@ const assertObjectsEqual = function (object1, object2) {
 
 assertObjectsEqual({ a: 2 }, { a: 1 }); // not equal
 assertObjectsEqual({ a: 1 }, { a: 1 }); // equal
+
+module.exports = assertObjectsEqual;

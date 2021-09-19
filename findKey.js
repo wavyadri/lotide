@@ -24,8 +24,8 @@ findKey(
     friday: { hours: 8 },
     saturday: { hours: 4 },
   },
-  (x) => x.stars === 8
-); // => "noma"
+  (x) => x.hours === 8
+); // => wednesday
 
 // TEST CODE
 assertEqual(
