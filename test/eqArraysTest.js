@@ -1,6 +1,5 @@
 const assert = require('chai').assert;
 const eqArrays = require('../eqArrays');
-// const assertEqual = require('../assertEqual');
 
 describe('eqArrays', () => {
   it('returns true for equality check of [] and []', () => {
