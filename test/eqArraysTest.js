@@ -1,22 +1,17 @@
+const assert = require('chai').assert;
 const eqArrays = require('../eqArrays');
-const assertEqual = require('../assertEqual');
+// const assertEqual = require('../assertEqual');
 
-// TEST CODE
-assertEqual(eqArrays([1], [1, 2, 3]), false); // => should PASS
-assertEqual(eqArrays([1, 1, 3], [1, 2, 3]), false); // => should PASS
-assertEqual(eqArrays([], []), true); // => should PASS
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => should PASS
+describe('eqArrays', () => {
+  it('returns true for equality check of [] and []', () => {
+    assert.deepEqual(eqArrays([], []), true);
+  });
 
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true); // => true
+  it('returns true for equality check of [1,2,3] and [1,2,3', () => {
+    assert.deepEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
+  });
 
-assertEqual(
-  eqArrays(
-    [[2, 3], [4]],
-    [
-      [2, 3],
-      [4, 5],
-    ]
-  ),
-  false
-); // => false
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], 4]), false); // => false
+  it('returns false for equality check of [1,1,3] and [1,2,3]', () => {
+    assert.deepEqual(eqArrays([1, 1, 3], [1, 2, 3]), false);
+  });
+});
