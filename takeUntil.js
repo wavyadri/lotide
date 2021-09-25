@@ -1,15 +1,3 @@
-// const takeUntil = function (array, callback) {
-//   let newArray = [];
-//   for (let element of array) {
-//     if (!callback(element)) {
-//       newArray.push(element);
-//     } else {
-//       return newArray;
-//     }
-//   }
-//   return newArray;
-// };
-
 // refactor
 const takeUntil = function (array, callback) {
   for (let element of array) {
