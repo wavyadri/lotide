@@ -1,11 +1,3 @@
-const assertEqual = function (actual, expected) {
-  if (actual === expected) {
-    console.log(`✅✅ Assertion Passed: ${actual} === ${expected}`);
-  } else {
-    console.log(`🛑🛑 Assertion Failed: ${actual} !== ${expected}`);
-  }
-};
-
 const countLetters = (word) => {
   let results = {};
 
@@ -26,17 +18,5 @@ const countLetters = (word) => {
   }
   return results;
 };
-
-// question: how to format tests
-
-let result1 = countLetters(' ');
-let result2 = countLetters('Adriana');
-
-assertEqual(Object.keys(result1).length, 0);
-assertEqual(result2.a, 3);
-assertEqual(result2.d, 1);
-assertEqual(result2.r, 1);
-assertEqual(result2.i, 1);
-assertEqual(result2.n, 1);
 
 module.exports = countLetters;
